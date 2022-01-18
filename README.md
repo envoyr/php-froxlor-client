@@ -6,7 +6,7 @@ API Wrapper for Froxlor.
 
 ````
 $froxlor = new \Envoyr\Froxlor\Server([
-    'host' => 'de-nue-dev.bitinflow.space',
+    'host' => 'https://froxlor.example.com',
     'key' => '',
     'secret' => ''
 ]);
