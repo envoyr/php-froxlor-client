@@ -1,0 +1,21 @@
+{
+  "name": "envoyr/php-froxlor-client",
+  "type": "library",
+  "autoload": {
+    "psr-4": {
+      "Envoyr\\Froxlor\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "envoyr",
+      "email": "hello@envoyr.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": "^7.4|^8.0",
+    "guzzlehttp/guzzle": "^7.0.1",
+    "ext-json": "*"
+  }
+}
