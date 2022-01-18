@@ -2,19 +2,27 @@
 
 API Wrapper for Froxlor.
 
+## Installation 
+
+You can install it via composer:
+
+```console
+$ composer require envoyr/php-froxlor-client
+```
+
 ## How to use
 
-````
+```php
 $froxlor = new \Envoyr\Froxlor\Server([
     'host' => 'https://froxlor.example.com',
     'key' => '',
     'secret' => ''
 ]);
-````
+```
 
 ### Customer
 
-````
+```php
 $response = $froxlor
     ->customers
     ->create([
@@ -29,16 +37,16 @@ $response = $froxlor
         'api_allowed' => false,
         'createstdsubdomain' => true,
     ]);
-````
+```
 
 ### Email
 
-````
+```php
 $response = $froxlor
     ->customer('example')
     ->email('hello@example.com')
     ->attributes;
-````
+```
 
 ### Info
 
