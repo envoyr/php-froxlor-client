@@ -36,18 +36,15 @@ class Server
         }
 
         $payload = [
-            'header' => [
-                'apikey' => $this->apiKey,
-                'secret' => $this->apiSecret,
-            ],
-            'body' => [
-                'command' => $command,
-                'params' => $attributes
-            ]
+            'command' => $command,
+            'params' => $attributes
         ];
+        
+        $token = base64encode(sprintf('%s:%s', $this->apiKey, $this->apiSecret))
 
         $response = $this->client->post("api.php", [
             'headers' => [
+                'Authorization' => 'Basic ' . $token,
                 'Content-Type' => 'application/json',
             ],
             'body' => json_encode($payload)
