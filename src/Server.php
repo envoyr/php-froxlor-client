@@ -40,7 +40,7 @@ class Server
             'params' => $attributes
         ];
         
-        $token = base64encode(sprintf('%s:%s', $this->apiKey, $this->apiSecret));
+        $token = base64_encode(sprintf('%s:%s', $this->apiKey, $this->apiSecret));
 
         $response = $this->client->post("api.php", [
             'headers' => [
