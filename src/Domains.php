@@ -26,7 +26,7 @@ class Domains
     {
         return $this->customer->server->request('Domains.listing', [
             'sql_search' => [
-                'customerid' => [
+                'c.customerid' => [
                     'op' => '=',
                     'value' => $this->customer->id,
                 ]
