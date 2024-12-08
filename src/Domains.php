@@ -11,14 +11,21 @@ class Domains
         $this->customer = $customer;
     }
 
-    public function create(string $domain, bool $letsencrypt = false): array
+    public function create(
+        string $domain,
+        bool $letsencrypt = false,
+        ?string $description = null,
+        bool $isemaildomain = true,
+        bool $caneditdomain = true
+    ): array
     {
         return $this->customer->server->request('Domains.add', [
             'customerid' => $this->customer->id,
             'domain' => $domain,
             'letsencrypt' => $letsencrypt,
-            'isemaildomain' => true,
-            'caneditdomain' => true,
+            'isemaildomain' => $isemaildomain,
+            'caneditdomain' => $caneditdomain,
+            'description' => $description,
         ]);
     }
 
