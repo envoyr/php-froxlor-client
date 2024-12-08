@@ -16,8 +16,8 @@ class EmailAccount
     public function delete()
     {
         $this->email->customer->server->request('EmailAccounts.delete', [
-            'loginname' => $this->email->customer->loginname,
-            'emailaddr' => $this->email->emailaddr,
+            'customerid' => $this->email->customer->id,
+            'id' => $this->email->id,
         ]);
     }
 
@@ -26,8 +26,8 @@ class EmailAccount
         return $this->email->customer->server->request(
             'EmailAccounts.update',
             array_merge($attributes, [
-                'loginname' => $this->email->customer->loginname,
-                'emailaddr' => $this->email->emailaddr,
+                'customerid' => $this->email->customer->id,
+                'id' => $this->email->id,
             ])
         );
     }

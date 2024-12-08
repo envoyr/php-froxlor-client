@@ -9,15 +9,15 @@ class Customer
     public Domains $domains;
     public Ftps $ftps;
     public Emails $emails;
-    public string $loginname;
+    public string $id;
     public Server $server;
 
-    public function __construct(Server $server, string $loginname)
+    public function __construct(Server $server, string $id)
     {
         $this->server = $server;
-        $this->loginname = $loginname;
+        $this->id = $id;
         $this->attributes = $this->server->request('Customers.get', [
-            'loginname' => $this->loginname
+            'id' => $this->id
         ]);
 
         $this->databases = $this->databases();
@@ -46,30 +46,30 @@ class Customer
         return new Emails($this);
     }
 
-    public function database(string $dbname): Database
+    public function database(string $id): Database
     {
-        return new Database($this, $dbname);
+        return new Database($this, $id);
     }
 
-    public function domain(string $domainname): Domain
+    public function domain(string $id): Domain
     {
-        return new Domain($this, $domainname);
+        return new Domain($this, $id);
     }
 
-    public function email(string $emailaddr): Email
+    public function email(string $id): Email
     {
-        return new Email($this, $emailaddr);
+        return new Email($this, $id);
     }
 
-    public function ftp(string $username): Ftp
+    public function ftp(string $id): Ftp
     {
-        return new Ftp($this, $username);
+        return new Ftp($this, $id);
     }
 
     public function deactivated(bool $deactivated): array
     {
         return $this->server->request('Customers.update', [
-            'loginname' => $this->loginname,
+            'id' => $this->id,
             'deactivated' => $deactivated
         ]);
     }
@@ -79,7 +79,7 @@ class Customer
         return $this->server->request(
             'Customers.update',
             array_merge($attributes, [
-                'loginname' => $this->loginname
+                'id' => $this->id
             ])
         );
     }
@@ -87,7 +87,7 @@ class Customer
     public function delete(): array
     {
         return $this->server->request('Customers.delete', [
-            'loginname' => $this->loginname
+            'id' => $this->id
         ]);
     }
 }

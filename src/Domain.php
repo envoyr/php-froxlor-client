@@ -6,14 +6,14 @@ class Domain
 {
     public array $attributes;
     public Customer $customer;
-    public string $domainname;
+    public string $id;
 
-    public function __construct(Customer $customer, string $domainname)
+    public function __construct(Customer $customer, string $id)
     {
-        $this->domainname = $domainname;
+        $this->id = $id;
         $this->customer = $customer;
         $this->attributes = $this->customer->server->request('Domains.get', [
-            'domainname' => $this->domainname
+            'id' => $this->id
         ]);
     }
 
@@ -22,7 +22,7 @@ class Domain
         return $this->customer->server->request(
             'Domains.update',
             array_merge($attributes, [
-                'domainname' => $this->domainname,
+                'id' => $this->id,
             ])
         );
     }
@@ -30,7 +30,7 @@ class Domain
     public function delete(): array
     {
         return $this->customer->server->request('Domains.delete', [
-            'domainname' => $this->domainname
+            'id' => $this->id
         ]);
     }
 }

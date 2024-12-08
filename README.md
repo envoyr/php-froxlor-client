@@ -1,5 +1,8 @@
 # PHP Froxlor API Client
 
+> [!WARNING]
+> We have changed the way we get the object. Now you have to use the `id` instead of the `name` to get, change or delete the object.
+
 API Wrapper for Froxlor.
 
 ## Installation 
@@ -43,8 +46,8 @@ $response = $froxlor
 
 ```php
 $response = $froxlor
-    ->customer('example')
-    ->email('hello@example.com')
+    ->customer(1)
+    ->email(1)
     ->attributes;
 ```
 

@@ -14,7 +14,7 @@ class Ftps
     public function create(string $password, string $path = '/', string $description = null, bool $mail = false): array
     {
         return $this->customer->server->request('Ftps.add', [
-            'loginname' => $this->customer->loginname,
+            'customerid' => $this->customer->id,
             'ftp_password' => $password,
             'path' => $path,
             'ftp_description' => $description,
@@ -25,7 +25,7 @@ class Ftps
     public function list(): array
     {
         return $this->customer->server->request('Ftps.listing', [
-            'loginname' => $this->customer->loginname,
+            'customerid' => $this->customer->id,
         ]);
     }
 }

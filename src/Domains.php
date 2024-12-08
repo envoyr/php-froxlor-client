@@ -14,7 +14,7 @@ class Domains
     public function create(string $domain, bool $letsencrypt = false): array
     {
         return $this->customer->server->request('Domains.add', [
-            'loginname' => $this->customer->loginname,
+            'customerid' => $this->customer->id,
             'domain' => $domain,
             'letsencrypt' => $letsencrypt,
             'isemaildomain' => true,
@@ -26,9 +26,9 @@ class Domains
     {
         return $this->customer->server->request('Domains.listing', [
             'sql_search' => [
-                'loginname' => [
+                'customerid' => [
                     'op' => '=',
-                    'value' => $this->customer->loginname,
+                    'value' => $this->customer->id,
                 ]
             ],
         ]);

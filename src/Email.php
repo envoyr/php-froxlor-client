@@ -6,15 +6,15 @@ class Email
 {
     public array $attributes;
     public EmailAccounts $email_accounts;
-    public string $emailaddr;
+    public string $id;
     public Customer $customer;
 
-    public function __construct(Customer $customer, string $emailaddr)
+    public function __construct(Customer $customer, string $id)
     {
         $this->customer = $customer;
-        $this->emailaddr = $emailaddr;
+        $this->id = $id;
         $this->attributes = $this->customer->server->request('Emails.get', [
-            'emailaddr' => $this->emailaddr
+            'id' => $this->id
         ]);
 
         $this->email_accounts = $this->email_accounts();
@@ -35,8 +35,8 @@ class Email
         return $this->customer->server->request(
             'Emails.update',
             array_merge($attributes, [
-                'loginname' => $this->customer->loginname,
-                'emailaddr' => $this->emailaddr,
+                'customerid' => $this->customer->id,
+                'id' => $this->id,
             ])
         );
     }
@@ -44,8 +44,8 @@ class Email
     public function delete(): array
     {
         return $this->customer->server->request('Emails.delete', [
-            'loginname' => $this->customer->loginname,
-            'emailaddr' => $this->emailaddr
+            'customerid' => $this->customer->id,
+            'id' => $this->id
         ]);
     }
 }

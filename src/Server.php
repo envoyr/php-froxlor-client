@@ -55,8 +55,8 @@ class Server
         return $payload['data'];
     }
 
-    public function customer(string $loginname): Customer
+    public function customer(string $id): Customer
     {
-        return new Customer($this, $loginname);
+        return new Customer($this, $id);
     }
 }

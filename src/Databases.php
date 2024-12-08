@@ -18,7 +18,7 @@ class Databases
         string $suffix = null
     ): array {
         return $this->customer->server->request('Mysqls.add', [
-            'loginname' => $this->customer->loginname,
+            'customerid' => $this->customer->id,
             'mysql_password' => $password,
             'description' => $description,
             'sendinfomail' => $mail,
@@ -29,7 +29,7 @@ class Databases
     public function list(): array
     {
         return $this->customer->server->request('Mysqls.listing', [
-            'loginname' => $this->customer->loginname,
+            'customerid' => $this->customer->id,
         ]);
     }
 }
