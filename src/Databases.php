@@ -13,9 +13,9 @@ class Databases
 
     public function create(
         string $password,
-        string $description = null,
+        ?string $description = null,
         bool $mail = false,
-        string $suffix = null
+        ?string $suffix = null
     ): array {
         return $this->customer->server->request('Mysqls.add', [
             'customerid' => $this->customer->id,

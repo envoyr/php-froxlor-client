@@ -11,7 +11,7 @@ class Ftps
         $this->customer = $customer;
     }
 
-    public function create(string $password, string $path = '/', string $description = null, bool $mail = false): array
+    public function create(string $password, string $path = '/', ?string $description = null, bool $mail = false): array
     {
         return $this->customer->server->request('Ftps.add', [
             'customerid' => $this->customer->id,

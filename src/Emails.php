@@ -11,7 +11,7 @@ class Emails
         $this->customer = $customer;
     }
 
-    public function create(string $email_part, string $domain, string $description = null): array
+    public function create(string $email_part, string $domain, ?string $description = null): array
     {
         return $this->customer->server->request('Emails.add', [
             'customerid' => $this->customer->id,
